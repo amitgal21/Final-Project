@@ -1,12 +1,12 @@
 from tkinter import *
 from PIL import ImageTk
 
-global root, usernameEntry, passwordEntry, openEye, closeEye , eyeButton
+global root, usernameEntry, passwordEntry, openEye, closeEye , eyeButton, loginWindow
 
 
 def initScreen():
     # initilize the First Screen of Program
-    global usernameEntry, passwordEntry, openEye, closeEye,eyeButton
+    global usernameEntry, passwordEntry, openEye, closeEye,eyeButton, loginWindow
     loginWindow = Tk()
     loginWindow.geometry('990x660+50+50')
     loginWindow.resizable(0, 0)
@@ -84,7 +84,7 @@ def initScreen():
 
     newAccountButton = Button(loginWindow, text='Create New one', font=('Open Sans', 9, 'bold underline'),
                          fg='blue', bg='white', activeforeground='blue',
-                         activebackground='white', cursor='hand2', bd=0)
+                         activebackground='white', cursor='hand2', bd=0,command=sign_up_page)
     newAccountButton.place(x=727, y=500)
 
 
@@ -108,3 +108,8 @@ def hide():
     else:
         passwordEntry.config(show='')
         eyeButton.config(image=openEye)
+
+def sign_up_page():
+    loginWindow.destroy()
+    from signUpScreen import init_signup_screen
+    init_signup_screen()
